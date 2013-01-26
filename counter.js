@@ -15,7 +15,7 @@
             }, options);
 
         var $this = this,
-            targetDate = new Date(2013, 1, 25);
+            targetDate = new Date(settings.targetDate);
 
 
         (function tick(){
@@ -39,10 +39,10 @@
                 // Number of seconds left
                 s = timeLeft;
                 
-                $this.html(d + ' gün ' + h + ' saat ' + m + ' dakika ' + s);
+                $this.html(d + ' gün, ' + h + ' saat, ' + m + ' dakika');
             };
 
-            setInterval(tick, 1000);
+            setInterval(tick, 60000);
         })();
 
         

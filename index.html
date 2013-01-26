@@ -8,10 +8,17 @@
 </head>
 <body>
     <div class="countdown"></div>
+    <div class="countdown2"></div>
 
     <script>
         $(document).ready(function(){
-            $(".countdown").simpleCountdown();
+            $(".countdown").simpleCountdown({
+                targetDate: "2013-8-9"
+            });
+
+            $(".countdown2").simpleCountdown({
+                targetDate: "2013-12-31"
+            });
         });
     </script>
 </body>
