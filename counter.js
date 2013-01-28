@@ -11,7 +11,8 @@
         // Create some defaults, extending them with any options that were provided
         var settings = $.extend( {
                 'showSeconds' : true,
-                'showZero' : true
+                'showZero' : true,
+                'tickAt' : 1000
             }, options);
 
         var $this = this,
@@ -39,10 +40,10 @@
                 // Number of seconds left
                 s = timeLeft;
                 
-                $this.html(d + ' gün, ' + h + ' saat, ' + m + ' dakika');
+                $this.html(d + ' gün, ' + h + ' saat, ' + m + ' dakika ' + s + ' s.');
             };
 
-            setInterval(tick, 60000);
+            setTimeout(tick, settings.tickAt);
         })();
 
         
