@@ -11,13 +11,12 @@
         // Create some defaults, extending them with any options that were provided
         var settings = $.extend( {
                 'showSeconds' : true,
-                'showZero' : true,
+                'showZero' : false,
                 'tickAt' : 1000
             }, options);
 
         var $this = this,
-            targetDate = new Date(settings.targetDate);
-
+            targetDate = new Date(settings.year, settings.month-1, settings.day);
 
         (function tick(){
             var timeLeft = Math.floor((targetDate - (new Date())) / 1000), // time left in seconds
@@ -40,13 +39,17 @@
                 // Number of seconds left
                 s = timeLeft;
                 
-                $this.html(d + ' gün, ' + h + ' saat, ' + m + ' dakika ' + s + ' s.');
+                var html = d + " gün, " + h + " saat, " + m + " dakika";
+
+                if (settings.showZero) {
+                    html += " " + s + " saniye ";
+                };
+
+                $this.html(html);
             };
 
+            // console.log(d + ' gün, ' + h + ' saat, ' + m + ' dakika ' + s + ' s.');
             setTimeout(tick, settings.tickAt);
         })();
-
-        
-
     };
-})( jQuery );
+}) ( jQuery );
